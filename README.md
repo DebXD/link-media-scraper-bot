@@ -9,7 +9,7 @@ cd link-media-grabber
 
 ```
 pip3 install wheel
-apt install libxml2 libxslt
+apt install libxml2 libxslt wget
 pip3 install -r requirements.txt
 ```
 # Run the project :
