@@ -19,4 +19,7 @@ bash run_grabber.sh
 
 This Script will download files in contents folder inside this folder on your local machine.
 
+Tested on Termux Since I don't own a PC/Laptop
+
 *Note : You can't except it to work with every website.
+
