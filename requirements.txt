@@ -4,8 +4,12 @@ charset-normalizer==2.0.10
 idna==3.3
 linkGrabber==0.3.1
 lxml==4.7.1
+pyaes==1.6.1
+Pyrogram==1.4.8
+PySocks==1.7.1
+python-decouple==3.6
 requests==2.27.1
 six==1.16.0
 soupsieve==2.3.1
+TgCrypto==1.2.3
 urllib3==1.26.8
-wheel==0.37.1
