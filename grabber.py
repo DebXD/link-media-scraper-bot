@@ -26,7 +26,7 @@ def get_urls(link):
                 final_list = remove_dup(url_list)
     return final_list
 
-#urls = get_urls("https://cyberdrop.me/a/Y20vnugV")
+
 
 
 

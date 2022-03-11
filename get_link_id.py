@@ -1,4 +1,3 @@
-#link = "https://cdn.bunkr.is/0gxhxgx6b4fr2p11dq9qq_source-Gz1RrIPF.mp4"
 def get_link_id(link):
     lst = []
     for i in link:

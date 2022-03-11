@@ -1,0 +1,36 @@
+{
+    "name": "Link Media Scraper Bot",
+    "description": "A Pyrogram Scraper Bot which scrapes Cyberdrop.to, Bunkr.is links.",
+    "logo": "https://telegra.ph/file/5401d0b9c1c0ce3337435.jpg",
+    "keywords": [
+        "Pyrogram",
+        "telegram",
+        "Bot",
+        "python"
+    ],
+    "repository": "https://github.com/DebiprasadXD/link-media-scraper-bot",
+    "env": {
+        "API_ID": {
+            "description": "You Api id, Get it from my.telegram.org",
+            "value": "", 
+            "required": true
+        },
+        "API_HASH": {
+            "description": "You Api hash, Get it from my.telegram.org",
+            "value": "",
+            "required": true
+        },
+        
+        "BOT_TOKEN": {
+            "description": "Your Bot API Token, Get it from Bot Father of Telegram",
+            "value": "",
+            "required": true
+        },
+        
+        "LOG_CHAT_ID": {
+            "description": "Your chat id,  where you will be notified if the bot is up or not, Default is None",
+            "value": "None",
+            "required": false
+        }
+    }
+}
