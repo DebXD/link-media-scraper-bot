@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, os
 from decouple import config
 
 login_id = config('API_USERNAME')
@@ -14,11 +14,10 @@ def upload_video():
     ul_url = data.get('result').get('url')
 
 
-#Enter Path to the file
-   #heroku path
-    path : "/app/downloads/video.mp4"
-    #Local
-    #path = "/sdcard/pyrogram-bot2/downloads/video.mp4"
+    #Enter Path to the file
+    local_path = os.getcwd()
+    path =local_path + "/downloads/video.mp4"
+
     print("Uploading...")
     files = { 'file' : ("@"+path,open(path,'rb'), 'multipart/form-data')}
 
