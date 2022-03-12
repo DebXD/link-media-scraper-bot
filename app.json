@@ -31,6 +31,16 @@
             "description": "Your chat id,  where you will be notified if the bot is up or not, Default is None",
             "value": "None",
             "required": false
+        },
+        "API_USERNAME": {
+            "description": "Your Streamtape API Username, Default is None",
+            "value": "None",
+            "required": false
+        },
+        "API_PASSWORD": {
+            "description": "Your Streamtape API Password, Default is None",
+            "value": "None",
+            "required": false
         }
     }
 }

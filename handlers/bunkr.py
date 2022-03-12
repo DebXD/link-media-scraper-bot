@@ -1,0 +1,83 @@
+import requests, os, time
+
+import helpers.grabber
+import utils.get_extension
+import utils.get_link_id
+
+session = requests.Session()
+
+def exec_bunkr(client,message):
+    
+    text = message.text[7:]
+    chat_id = message.chat.id
+    msg_id = message.message_id
+    print(text)
+    
+    if text == "":
+        client.send_message(chat_id=chat_id, text="Enter a Bunkr Link")
+    else:
+        url_list = helpers.grabber.get_urls(text)
+        print(url_list)
+
+        for link in url_list:
+            extension = utils.get_extension.get_url_extension(link)
+            print(extension)
+
+            if extension == ".jpg":
+                try:
+                    response = session.get(link, allow_redirects= True)
+                    open("image.jpg","wb").write(response.content)
+                    directory = os.getcwd()
+                    print("Sending image...")
+
+                    try:
+                        client.send_photo(chat_id = chat_id, photo = open("image.jpg","rb"))
+                        print("Sent")
+
+                        time.sleep(0.1)
+                    except Exception as e:
+                        print(e)
+                except Exception as e:
+                    print(e)
+                                          
+            elif extension == ".png":
+                try:
+                    response = session.get(link, allow_redirects= True)
+                    open("image.png","wb").write(response.content)
+                    directory = os.getcwd()
+                    print("Sending image...")
+
+                    try:
+                        client.send_photo(chat_id = chat_id, photo = open("image.png","rb"))
+                        print("Sent")
+
+                        time.sleep(0.1)
+                    except Exception as e:
+                        print(e)
+                except Exception as e:
+                    print(e)
+
+
+            else:
+                link_id = utils.get_link_id.get_link_id(link)
+                resource_link = "https://media-files.bunkr.is/" + link_id
+                print(resource_link)
+                try:
+                    print("Downloading...")
+                    response = session.get(resource_link, allow_redirects= True)
+                    open("video.mp4","wb").write(response.content)
+                    directory = os.getcwd()
+                    print("Sending video...")
+                    try:
+                        client.send_video(chat_id = chat_id, video = open("video.mp4","rb"))
+                        print("Sent")
+                        os.remove(directory+"/video.mp4")
+                        print('Video is Cleaned.')
+                        time.sleep(0.1)
+                    except Exception as e:
+                        print(e)
+                except Exception as e:
+                    print(e)
+
+        print("Task is Completed")
+        client.send_message(chat_id = chat_id, text="Task Completed", reply_to_message_id = msg_id)
