@@ -1,35 +1,34 @@
 import requests, json, time
 from decouple import config
 import utils.get_file_id
-#import handlers.streamdl
+import helpers.get_dl_ticket
+import helpers.get_dl_url
 
-#get_file_id = utils.get_file_id
 def streamtape_dl(link):
     file_id = utils.get_file_id.get_file_id(link)
     print("Processing...")
+    print(file_id)
 
     login_key = config('API_USERNAME')
     key = config('API_PASSWORD')
-
-    headers = {'file':file_id,'login':login_key,'key':key}
-    response = requests.get("https://api.streamtape.com/file/dlticket?",headers)
-    data = json.loads(response.text)
-
-    ticket = data.get('result').get('ticket')
-
-    for i in range(3,0,-1):
-        print(f"Please wait for {i} sec...")
-        time.sleep(1)
-        #without this sleep method api will return  error 403[forbidden]
-    headers = {'file':file_id,'ticket':ticket,'login':login_key,'key':key}
-    response = requests.get("https://api.streamtape.com/file/dl?",headers)
-    data = json.loads(response.text)
-    link = data.get('result').get('url')
-    byte_size = data.get('result').get('size')
-    size_in_MB = int(byte_size/1024/1024)
-    print(f'File Size : {size_in_MB}MB')
     
-    print("Downloading...")
-    r = requests.get(link)
-    open('video.mp4', 'wb').write(r.content)
-    print("Download is Completed")
+    result = helpers.get_dl_ticket.get_ticket(file_id)
+    print(result)
+    if result is None:
+        print("Result is None, Could not generate Ticket")
+        return False
+    else:
+        ticket = result.get('ticket')
+        print(ticket)
+        print("Please wait for 5 sec...")
+        time.sleep(5)
+        #without this sleep method api will return  error 403[forbidden]
+        link = helpers.get_dl_url.dl_url(ticket,file_id)
+        print("Downloading...")
+        try:
+            r = requests.get(link)
+            open('video.mp4', 'wb').write(r.content)
+            print("Download is Completed")
+        except Exception as e:
+            print(e)
+        return True

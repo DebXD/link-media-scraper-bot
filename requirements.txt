@@ -13,3 +13,7 @@ six==1.16.0
 soupsieve==2.3.1
 TgCrypto==1.2.3
 urllib3==1.26.8
+colorama==0.4.4
+commonmark==0.9.1
+Pygments==2.11.2
+PySSL==0.0.7

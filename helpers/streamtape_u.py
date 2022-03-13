@@ -31,7 +31,7 @@ def upload_video():
         mb = int(size_in_bytes)/1024/1024
         print("Uploaded Successfully")
         os.remove(path)
-        print("video is deleted")
+        print("video is cleaned")
         return url
     except Exception as e:
         print(e)
