@@ -1,9 +1,9 @@
 from pyrogram import Client
 from pyrogram import filters
-from decouple import config
 
 from decouple import config
 
+import session_gen
 import handlers.cyberdrop
 import handlers.bunkr
 import handlers.start
@@ -11,20 +11,14 @@ import handlers.help
 import handlers.streamdl
 import handlers.streamul
 
-
-
-api_id = config("API_ID")
-api_hash = config("API_HASH")
-bot_token = config("BOT_TOKEN")
 log_chat_id = config("LOG_CHAT_ID")
 
-app = Client("my_bot",api_id,api_hash,bot_token=bot_token)
+app = session_gen.gen_session()
 with app:
-    if log_chat_id != "None":
-        app.send_message(chat_id=log_chat_id,text="I'm Running...")
+    if log_chat_id is not None:
+        app.send_message(int(log_chat_id,"I'm Running...")
     else:
         pass
-    
 ##--------------START---------------##
 @app.on_message(filters.command("start"))
 def welcome(client, message):
@@ -68,7 +62,5 @@ def upload_streamtape(client,message):
    
         
         
-    
-    
     
 app.run()
