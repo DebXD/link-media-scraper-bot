@@ -16,7 +16,7 @@ log_chat_id = config("LOG_CHAT_ID")
 app = session_gen.gen_session()
 with app:
     if log_chat_id is not None:
-        app.send_message(int(log_chat_id,"I'm Running...")
+        app.send_message(int(log_chat_id),"I'm Running...")
     else:
         pass
 ##--------------START---------------##
