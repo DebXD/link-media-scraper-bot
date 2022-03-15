@@ -28,7 +28,7 @@ def upload_video():
         data = json.loads(response.text)
         url = data.get('result').get('url')
         size_in_bytes = data.get('result').get('size')
-        mb = int(size_in_bytes)/1024/1024
+        #mb = int(size_in_bytes)/1024/1024
         print("Uploaded Successfully")
         os.remove(path)
         print("video is cleaned")

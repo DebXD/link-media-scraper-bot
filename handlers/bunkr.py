@@ -18,6 +18,7 @@ def exec_bunkr(client,message):
     else:
         url_list = helpers.grabber.get_urls(text)
         print(url_list)
+        client.send_message(chat_id=chat_id, text="Please Wait...")
 
         for link in url_list:
             extension = utils.get_extension.get_url_extension(link)
@@ -27,7 +28,6 @@ def exec_bunkr(client,message):
                 try:
                     response = session.get(link, allow_redirects= True)
                     open("image.jpg","wb").write(response.content)
-                    directory = os.getcwd()
                     print("Sending image...")
 
                     try:

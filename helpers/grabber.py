@@ -1,4 +1,5 @@
-import linkGrabber, re, time
+import linkGrabber, re
+
 def remove_dup(lst):
     set1 = set()
     final_list = []
