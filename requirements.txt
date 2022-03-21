@@ -17,3 +17,4 @@ colorama==0.4.4
 commonmark==0.9.1
 Pygments==2.11.2
 PySSL==0.0.7
+speedtest-cli==2.1.3

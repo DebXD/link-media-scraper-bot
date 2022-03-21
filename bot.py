@@ -3,19 +3,21 @@ from pyrogram import filters
 
 from decouple import config
 
-import session_gen
+import session.session_gen
 import handlers.cyberdrop
 import handlers.bunkr
 import handlers.start
 import handlers.help
 import handlers.streamdl
 import handlers.streamul
+import handlers.ping
 
 log_chat_id = config("LOG_CHAT_ID")
 
-app = session_gen.gen_session()
+app = session.session_gen.gen_session()
+
 with app:
-    if log_chat_id is not None:
+    if log_chat_id != "None":
         app.send_message(int(log_chat_id),"I'm Running...")
     else:
         pass
@@ -29,6 +31,12 @@ def welcome(client, message):
 def send_help(client, message):
     handlers.help.exec_help(client,message)
     
+##---------------ping-------------------##
+@app.on_message(filters.command("ping"))
+def send_ping(client, message):
+    handlers.ping.exec_ping(client, message)
+
+
 ##----------CYBERDROP--------------## 
 @app.on_message(filters.command("cyberdrop"))
 def send_cybermedia(client, message):
@@ -61,6 +69,4 @@ def upload_streamtape(client,message):
         
    
         
-        
-    
 app.run()

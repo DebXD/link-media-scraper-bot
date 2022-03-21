@@ -7,8 +7,7 @@ bot_token = config("BOT_TOKEN")
 
 def gen_session():
     app = Client("my_bot",api_id,api_hash,bot_token=bot_token)
-    return app
-
-    
-    
-    
+    with app:
+        session_string = app.export_session_string()
+        app = Client(session_string, api_id,api_hash,bot_token=bot_token)
+        return app

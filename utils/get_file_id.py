@@ -1,6 +1,3 @@
-#string = 'https://streamtape.com/v/oA8Brg6OQOTJV3P/zjjsbszjsnshsjzhz'
-#import handlers.streamdl.streamtape_dl
-
 def get_file_id(link):
     lst = []
     for i in link:
