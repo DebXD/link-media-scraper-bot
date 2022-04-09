@@ -4,6 +4,11 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
 # Simply Deploy on Heroku (Easier Way):
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DebiprasadXD/link-media-scraper-bot)
+# Handlers :
+ 1. for cyberdrop links `/cyberdrop [link]`
+ 2. for bunkr links `/bunkr [link]`
+ 3. for streamtape downloading - `/streamdl [link]`
+ 4. send any video to upload it to streamtape.
 
  # Deploy Locally :
  ```
@@ -12,6 +17,8 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  ```
  ### Install the required libraries :
  ```
+ pip3 install wheel
+ apt install libxml2 libxslt wget
  pip3 install -r requirements.txt
  ```
  ### Requirements:
