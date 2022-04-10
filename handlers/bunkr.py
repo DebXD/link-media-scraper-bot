@@ -22,7 +22,7 @@ def exec_bunkr(client,message):
 
         for link in url_list:
             extension = utils.get_extension.get_url_extension(link)
-            print(extension)
+            #print(extension)
 
             if extension == ".jpg":
                 try:

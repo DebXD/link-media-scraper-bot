@@ -1,17 +1,17 @@
 # link-media-scraper-bot
 A Telegram bot that used to download or upload the media contents from cyberdrop, bunkr and streamtape links.
 
-# Simply Deploy on Heroku (Easier Way):
+## Simply Deploy on Heroku (Easier Way):
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DebiprasadXD/link-media-scraper-bot)
-# Handlers :
+## Supported Handlers :
  1. for cyberdrop links `/cyberdrop [link]`
  2. for bunkr links `/bunkr [link]`
  3. for streamtape downloading - `/streamdl [link]`
  4. check latency with `/ping`
  5. send any video to upload it to streamtape.
 
- # Deploy Locally :
+ ## Deploy Locally :
  ```
  git clone https://github.com/DebiprasadXD/link-media-scraper-bot
  cd link-media-scraper-bot
