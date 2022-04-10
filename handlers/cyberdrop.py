@@ -3,6 +3,7 @@ import requests, os, time
 import helpers.grabber
 import utils.get_extension
 
+
 session = requests.Session()
 
 def exec_cyberdrop(client,message):
@@ -62,10 +63,25 @@ def exec_cyberdrop(client,message):
                     print("Downloading...")
                     response = session.get(link, allow_redirects= True)
                     open("video.mp4","wb").write(response.content)
+                    
+                    
+                        
                     directory = os.getcwd()
                     print("Sending video...")
+                    
+                    
+                    
+                    
                     try:
-                        client.send_video(chat_id = chat_id, video = open("video.mp4","rb"))
+                        import thumbnail.thumb
+                    
+                        thumbnail_path = thumbnail.thumb.make_thumbnail()
+                        
+                        
+                        client.send_video(chat_id = chat_id, video = open("video.mp4","rb"), thumb=open(thumbnail_path,"rb"))
+                        
+                        os.remove(directory+"/"+ thumbnail_path)
+                        
                         print("Sent")
                         os.remove(directory+"/video.mp4")
                         print('Video is Cleaned.')

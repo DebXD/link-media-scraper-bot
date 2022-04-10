@@ -8,7 +8,8 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  1. for cyberdrop links `/cyberdrop [link]`
  2. for bunkr links `/bunkr [link]`
  3. for streamtape downloading - `/streamdl [link]`
- 4. send any video to upload it to streamtape.
+ 4. check latency with `/ping`
+ 5. send any video to upload it to streamtape.
 
  # Deploy Locally :
  ```
