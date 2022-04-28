@@ -61,7 +61,7 @@ def exec_bunkr(client,message):
             else:
                 link_id = utils.get_link_id.get_link_id(link)
                 resource_link = "https://media-files.bunkr.is/" + link_id
-                print(resource_link)
+                #print(resource_link)
                 try:
                     print("Downloading...")
                     response = session.get(resource_link, allow_redirects= True)
@@ -69,7 +69,15 @@ def exec_bunkr(client,message):
                     directory = os.getcwd()
                     print("Sending video...")
                     try:
-                        client.send_video(chat_id = chat_id, video = open("video.mp4","rb"))
+                        import thumbnail.thumb
+
+                        thumbnail_path = thumbnail.thumb.make_thumbnail()
+
+
+                        client.send_video(chat_id = chat_id, video = open("video.mp4","rb"), thumb=open(thumbnail_path,"rb"))
+
+                        os.remove(directory+"/"+ thumbnail_path)
+                        
                         print("Sent")
                         os.remove(directory+"/video.mp4")
                         print('Video is Cleaned.')
