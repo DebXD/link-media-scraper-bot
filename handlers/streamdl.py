@@ -17,6 +17,8 @@ def exec_streamtapedl(client, message):
         if result is True:
             print("Uploading...")
             client.send_message(chat_id = chat_id, text = "Uploading...", reply_to_message_id = msg_id)
+            directory = os.getcwd()
+
             import thumbnail.thumb
             thumbnail_path = thumbnail.thumb.make_thumbnail()
 
@@ -25,9 +27,8 @@ def exec_streamtapedl(client, message):
 
             os.remove(directory+"/"+ thumbnail_path)
                         
-                        
             print("Sent")
-            directory = os.getcwd()
+    
             os.remove(directory + "/video.mp4")
             print("video is cleaned")
         else:
