@@ -22,6 +22,11 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  apt install libxml2 libxslt wget
  pip3 install -r requirements.txt
  ```
+ If Pillow Installation Fails on Termux Run this :
+ ```
+ apt install libjpeg-turbo
+ LDFLAGS="-L/system/lib64/" CFLAGS="-I/data/data/com.termux/files/usr/include/" pip install Pillow
+```
  ### Requirements:
  
  📌 API ID (Required) :
