@@ -35,12 +35,12 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Testing App...
+      env:
+        API_ID: ${{secrets.API_ID}}
+        API_HASH: ${{secrets.API_HASH}}
+        BOT_TOKEN: ${{secrets.BOT_TOKEN}}
+        LOG_CHAT_ID: ${{secrets.LOG_CHAT_ID}}
+        API_USERNAME: ${{secrets.API_USERNAME}}
+        API_PASSWORD: ${{secrets.API_PASSWORD}}i
       run: |
         python bot.py
-      env:
-        API_ID: {{secrets.API_ID}}
-        API_HASH: {{secrets.API_HASH}}
-        BOT_TOKEN: {{secrets.BOT_TOKEN}}
-        LOG_CHAT_ID: {{secrets.LOG_CHAT_ID}}
-        API_USERNAME: {{secrets.API_USERNAME}}
-        API_PASSWORD: {{secrets.API_PASSWORD}}
