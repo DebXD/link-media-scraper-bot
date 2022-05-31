@@ -19,7 +19,7 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  ### Install the required libraries :
  ```
  pip3 install wheel
- apt install libxml2 libxslt wget
+ apt install libxml2 libxslt wget ffmepg
  pip3 install -r requirements.txt
  ```
  If Pillow Installation Fails on Termux Run this :
