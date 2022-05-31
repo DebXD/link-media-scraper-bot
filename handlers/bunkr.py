@@ -1,13 +1,12 @@
 import requests, os, time
+import json
 
-import helpers.grabber
+import helpers.bunkr_scraper
 import utils.get_extension
-import utils.get_link_id
 
 session = requests.Session()
 
 def exec_bunkr(client,message):
-    
     text = message.text[7:]
     chat_id = message.chat.id
     msg_id = message.message_id
@@ -16,19 +15,27 @@ def exec_bunkr(client,message):
     if text == "":
         client.send_message(chat_id=chat_id, text="Enter a Bunkr Link")
     else:
-        url_list = helpers.grabber.get_urls(text)
-        print(url_list)
         client.send_message(chat_id=chat_id, text="Please Wait...")
+        print(text)
+        r = session.get(text)
 
-        for link in url_list:
-            extension = utils.get_extension.get_url_extension(link)
-            #print(extension)
+        if r.status_code == 403:
+            print("Use Proxy sir")
+            
+            
+        else:
+            url_list = helpers.bunkr_scraper.bunkr_scraper(text)
+           
+        for url in url_list:
+            extension = utils.get_extension.get_url_extension(url)
+            print(extension)
 
             if extension == ".jpg":
                 try:
-                    response = session.get(link, allow_redirects= True)
+                    response = session.get(url, allow_redirects= True)
                     open("image.jpg","wb").write(response.content)
                     print("Sending image...")
+                    
 
                     try:
                         client.send_photo(chat_id = chat_id, photo = open("image.jpg","rb"))
@@ -42,7 +49,7 @@ def exec_bunkr(client,message):
                                           
             elif extension == ".png":
                 try:
-                    response = session.get(link, allow_redirects= True)
+                    response = session.get(url, allow_redirects= True)
                     open("image.png","wb").write(response.content)
                     directory = os.getcwd()
                     print("Sending image...")
@@ -59,18 +66,15 @@ def exec_bunkr(client,message):
 
 
             else:
-                link_id = utils.get_link_id.get_link_id(link)
-                resource_link = "https://media-files.bunkr.is/" + link_id
-                #print(resource_link)
                 try:
-                    print("Downloading...")
-                    response = session.get(resource_link, allow_redirects= True)
+                    print("Downloading...vid")
+                    response = session.get(url, allow_redirects= True)
                     open("video.mp4","wb").write(response.content)
                     directory = os.getcwd()
                     print("Sending video...")
                     try:
                         import thumbnail.thumb
-
+                    
                         thumbnail_path = thumbnail.thumb.make_thumbnail()
 
 

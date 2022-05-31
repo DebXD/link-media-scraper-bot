@@ -41,6 +41,16 @@
             "description": "Your Streamtape API Password, Default is None",
             "value": "None",
             "required": false
+        },
+        "API_PASSWORD": {
+            "description": "Put http proxy for bunkr.is links, get it from webshare.io",
+            "value": "None",
+            "required": false
+        },
+        "HTTPS_PROXY": {
+            "description": "Put https proxy for bunkr.is links, get it from webshare.io",
+            "value": "None",
+            "required": false
         }
     }
 }

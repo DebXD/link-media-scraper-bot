@@ -46,6 +46,9 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  
  📌 API PASSWORD (Optional) :
  Enter Your [streamtape](https://streamtape.com) API PASSWORD from account panel to access the streamtape functionalities.
+ 
+  📌 HTTP/HTTPS PROXY (Optional) :
+ Enter Your [PROXY](https://webshare.io/) Sign Up and get the retotaing proxy.
 
  ## Usage: 
  1. Paste those things in `example.env` and rename it to `.env` afterwards. Do not add inverted comma or quotes.
