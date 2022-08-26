@@ -1,4 +1,3 @@
-from operator import length_hint
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -25,12 +24,17 @@ def bunkr_scraper(url):
                 item = items.get("pageProps")
                 print(item)
                 item2 = item.get("files")
-                length = len(item2)
-                print(length_hint)                
+                length = len(item2)              
                 for i in range(length):
                     name = item2[i].get('name')
-                    url = "https://media-files.bunkr.is/" + name
-                    print(url)
-                    url_list.append(url)
+                    cdn_url = item2[i].get('cdn')
+                    cdn = cdn_url.strip("https://cdn.bunkr.is")
+                    if cdn == "":
+                        url = "https://media-files.bunkr.is/" + name
+                        print(url)
+                        url_list.append(url)
+                    else:
+                        url = f"https://media-files{cdn}.bunkr.is/" + name
+                        print(url)
+                        url_list.append(url)
                 return url_list
-

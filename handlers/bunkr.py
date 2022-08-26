@@ -9,7 +9,7 @@ session = requests.Session()
 def exec_bunkr(client,message):
     text = message.text[7:]
     chat_id = message.chat.id
-    msg_id = message.message_id
+    msg_id = message.id
     print(text)
     
     if text == "":
@@ -84,7 +84,7 @@ def exec_bunkr(client,message):
                         
                         print("Sent")
                         os.remove(directory+"/video.mp4")
-                        print('Video is Cleaned.')
+                        print('vid removed.')
                         time.sleep(0.1)
                     except Exception as e:
                         print(e)

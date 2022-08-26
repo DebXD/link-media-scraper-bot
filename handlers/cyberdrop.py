@@ -10,14 +10,14 @@ def exec_cyberdrop(client,message):
     
     text = message.text[11:]
     chat_id = message.chat.id
-    msg_id = message.message_id
+    msg_id = message.id
     print(text)
     
     if text == "":
         client.send_message(chat_id=chat_id, text="Enter a Cyberdrop Link")
     else:
         url_list = helpers.grabber.get_urls(text)
-        print(url_list)
+        #print(url_list)
         client.send_message(chat_id=chat_id, text="Please Wait...")
 
         for link in url_list:
@@ -26,7 +26,7 @@ def exec_cyberdrop(client,message):
 
             if extension == ".jpg":
                 try:
-                    response = session.get(link, allow_redirects= True)
+                    response = session.get(link, allow_redirects= True, timeout=20)
                     open("image.jpg","wb").write(response.content)
                     print("Sending image...")
 
@@ -37,11 +37,16 @@ def exec_cyberdrop(client,message):
                         time.sleep(0.1)
                     except Exception as e:
                         print(e)
+
+                except (TimeoutError, ConnectionError):
+                    print(f'LINK TIMED OUT! {link}')
+
                 except Exception as e:
-                    print(e)
+                        print(e)
+
             elif extension == ".png":
                 try:
-                    response = session.get(link, allow_redirects= True)
+                    response = session.get(link, allow_redirects= True, timeout=20)
                     open("image.png","wb").write(response.content)
                     directory = os.getcwd()
                     print("Sending image...")
@@ -53,14 +58,17 @@ def exec_cyberdrop(client,message):
                         time.sleep(0.1)
                     except Exception as e:
                         print(e)
+                except (TimeoutError, ConnectionError):
+                    print(f'LINK TIMED OUT! {link}')
+
                 except Exception as e:
-                    print(e)
+                        print(e)
 
 
             else:
 
                 try:
-                    print("Downloading...")
+                    print("Downloading...mp4")
                     response = session.get(link, allow_redirects= True)
                     open("video.mp4","wb").write(response.content)
                     
@@ -88,8 +96,10 @@ def exec_cyberdrop(client,message):
                         time.sleep(0.1)
                     except Exception as e:
                         print(e)
+                except (TimeoutError, ConnectionError):
+                    print(f'LINK TIMED OUT! {link}')
                 except Exception as e:
-                    print(e)
+                        print(e)
 
         print("Task is Completed")
         client.send_message(chat_id = chat_id, text="Task Completed", reply_to_message_id = msg_id)
