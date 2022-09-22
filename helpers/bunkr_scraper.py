@@ -18,16 +18,18 @@ def bunkr_scraper(url):
     url_list = []
     for i in script:
         f = json.loads(i)
-        print(f)
+        #print(f)
         for key , items in f.items():
             if key == "props":
                 item = items.get("pageProps")
-                print(item)
-                item2 = item.get("files")
-                length = len(item2)              
+                item2 = item.get("album")
+
+                item3 = item2.get('files')
+                #print(item3)
+                length = len(item3)              
                 for i in range(length):
-                    name = item2[i].get('name')
-                    cdn_url = item2[i].get('cdn')
+                    name = item3[i].get('name')
+                    cdn_url = item3[i].get('cdn')
                     cdn = cdn_url.strip("https://cdn.bunkr.is")
                     if cdn == "":
                         url = "https://media-files.bunkr.is/" + name

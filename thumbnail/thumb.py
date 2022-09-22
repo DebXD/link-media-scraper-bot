@@ -16,7 +16,7 @@ def make_thumbnail():
         thumbnail_path = os.path.join(save_path,"thumb.jpg")
         thumbnail = Image.fromarray(frame)
         thumbnail.save(thumbnail_path)
-        print("Done")
+        print("Uploading...")
         return thumbnail_path
     except :
         print("No video found")

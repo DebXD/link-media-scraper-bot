@@ -20,7 +20,7 @@ def exec_bunkr(client,message):
         r = session.get(text)
 
         if r.status_code == 403:
-            print("Use Proxy sir")
+            print("***Use Proxy sir***")
             
             
         else:
@@ -28,13 +28,13 @@ def exec_bunkr(client,message):
            
         for url in url_list:
             extension = utils.get_extension.get_url_extension(url)
-            print(extension)
+            #print(extension)
 
             if extension == ".jpg":
                 try:
                     response = session.get(url, allow_redirects= True)
                     open("image.jpg","wb").write(response.content)
-                    print("Sending image...")
+                    print(f"Uploading {extension}...")
                     
 
                     try:
@@ -52,7 +52,7 @@ def exec_bunkr(client,message):
                     response = session.get(url, allow_redirects= True)
                     open("image.png","wb").write(response.content)
                     directory = os.getcwd()
-                    print("Sending image...")
+                    print(f"Uploading {extension}...")
 
                     try:
                         client.send_photo(chat_id = chat_id, photo = open("image.png","rb"))
@@ -67,11 +67,11 @@ def exec_bunkr(client,message):
 
             else:
                 try:
-                    print("Downloading...vid")
+                    print(f"Downloading...{extension}")
                     response = session.get(url, allow_redirects= True)
                     open("video.mp4","wb").write(response.content)
                     directory = os.getcwd()
-                    print("Sending video...")
+                    
                     try:
                         import thumbnail.thumb
                     
@@ -84,7 +84,7 @@ def exec_bunkr(client,message):
                         
                         print("Sent")
                         os.remove(directory+"/video.mp4")
-                        print('vid removed.')
+                        print(f'{extension} removed.')
                         time.sleep(0.1)
                     except Exception as e:
                         print(e)
