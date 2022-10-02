@@ -1,7 +1,7 @@
 import helpers.streamtape_u
 
 def exec_streamtapeul(client, message):
-    msg_id = message.message_id
+    msg_id = message.id
     chat_id = message.chat.id
     client.send_message(chat_id = chat_id, text ="Processing...")
     print("Processing")
