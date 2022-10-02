@@ -6,7 +6,7 @@ def exec_streamtapedl(client, message):
  
     text = message.text[10:]
     print(text)
-    msg_id = message.message_id
+    msg_id = message.id
     chat_id = message.chat.id
     if text == "":
         client.send_message(chat_id=chat_id, text="Enter a Streamtape Link")
