@@ -7,9 +7,11 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
 ## Supported Handlers and Features :
  * `/cyberdrop [link]` For cyberdrop links 
  * `/bunkr [link]` For bunkr links 
- * `/streamdl [link]` For streamtape downloading - 
- * `/ping` Fheck latency with 
- * Send any video to upload it to streamtape.
+ * `/streamdl [link]` For streamtape leeching. see environment variable section before using this command
+ *  Send any video to upload it to streamtape. see environment variable section...
+ * `/ping` Check latency
+ * `/help` To know about commands
+ 
 
  ## Deploy Locally :
  ### Termux:
@@ -43,19 +45,19 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  Your Telegram account API_HASH, Get it from [my.telegram.org](https://my.telegram.org)
  
  * * BOT TOKEN (Required) :
- Enter the Token of Your Bot, Get it from [BotFather](https://t.me/BotFather)
+ The Token of Your Bot, Get it from [BotFather](https://t.me/BotFather)
  
  * LOG CHAT ID (Optional) :
- Enter your CHAT_ID where you want to get bot run notification.
+ Your CHAT_ID where you want to get bot run notification.
  
  * API USERNAME (Optional) :
- Enter Your [streamtape](https://streamtape.com) API USERNAME from account panel to access the streamtape functionalities.
+ Your [streamtape](https://streamtape.com) API USERNAME from account panel to access the streamtape functionalities.
  
  * API PASSWORD (Optional) :
- Enter Your [streamtape](https://streamtape.com) API PASSWORD from account panel to access the streamtape functionalities.
+ Your [streamtape](https://streamtape.com) API PASSWORD from account panel to access the streamtape functionalities.
  
   * HTTP/HTTPS PROXY (Optional) :
- Enter Your [PROXY](https://webshare.io/) Sign Up and get the retotaing proxy if bunkr command(handler) crashes.
+ Your [PROXY](https://webshare.io/) Sign Up and get the retotaing proxy if bunkr command(handler) crashes.
 
  ### Usage: 
  - Paste these variable in `example.env` and rename it to `.env` afterwards. Do not add inverted comma or quotes.
@@ -64,8 +66,7 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
 ```
 $ python3 bot.py
 ```
-
 That's it.
-* Feel free to report any issues you have faced.
-Arigato Gozaimasu(Thanks) ;)
+* Feel free to report any issues you have faced.<br>
+Thanks for Using.
 _ _ _
