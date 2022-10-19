@@ -3,7 +3,7 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
 
 ## Simply Deploy on Heroku (Easier Way):
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DebiprasadXD/link-media-scraper-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DebXD/link-media-scraper-bot)
 ## Supported Handlers and Features :
  * `/cyberdrop [link]` For cyberdrop links 
  * `/bunkr [link]` For bunkr links 
@@ -16,7 +16,7 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
  ## Deploy Locally :
  ### Termux:
  ```
- git clone https://github.com/DebiprasadXD/link-media-scraper-bot
+ git clone https://github.com/DebXD/link-media-scraper-bot
  cd link-media-scraper-bot
  ```
  * Install the required libraries :
@@ -32,7 +32,7 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
 ```
 ### Linux :
 ```
- git clone https://github.com/DebiprasadXD/link-media-scraper-bot
+ git clone https://github.com/DebXD/link-media-scraper-bot
  cd link-media-scraper-bot
  pip3 install -r requirements.txt
  ```
