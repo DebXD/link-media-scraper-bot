@@ -10,4 +10,4 @@ def exec_streamtapeul(client, message):
     except Exception as e:
         print(e)
     uploaded_url = helpers.streamtape_u.upload_video()
-    client.send_message(chat_id = chat_id, text = uploaded_url, reply_to_message_id=msg_id, disable_web_page_preview = True)
+    client.send_message(chat_id = chat_id, text = f'Uploaded! Here is Your URL:\n{uploaded_url}', reply_to_message_id=msg_id, disable_web_page_preview = True)

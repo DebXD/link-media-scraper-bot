@@ -11,7 +11,5 @@ def get_file_id(link):
             break;
         else:
             file_id += i
-    print(file_id)
-    return file_id
-    
-        
+    #print(file_id)
+    return file_id     

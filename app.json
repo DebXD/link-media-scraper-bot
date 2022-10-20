@@ -8,7 +8,7 @@
         "Bot",
         "python"
     ],
-    "repository": "https://github.com/DebiprasadXD/link-media-scraper-bot",
+    "repository": "https://github.com/DebXD/link-media-scraper-bot",
     "env": {
         "API_ID": {
             "description": "You Api id, Get it from my.telegram.org",

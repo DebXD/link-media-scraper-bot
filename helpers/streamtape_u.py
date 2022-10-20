@@ -6,11 +6,12 @@ key_id = config('API_PASSWORD')
 session = requests.Session()
 
 def upload_video():
-    cred = { "login":login_id,"key":key_id }
+    headers = { "login":login_id,"key":key_id }
     print("Please be Patient")
-    response = session.get("https://api.streamtape.com/file/ul?",headers=cred)
+    response = requests.get("https://api.strtape.tech/file/ul?", headers=headers)
     
     data = json.loads(response.text)
+    #print(data)
     ul_url = data.get('result').get('url')
 
 
@@ -27,7 +28,7 @@ def upload_video():
         response = session.post(ul_url, files = files, headers=headers)
         data = json.loads(response.text)
         url = data.get('result').get('url')
-        size_in_bytes = data.get('result').get('size')
+        #size_in_bytes = data.get('result').get('size')
         #mb = int(size_in_bytes)/1024/1024
         print("Uploaded Successfully")
         os.remove(path)
