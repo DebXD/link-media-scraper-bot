@@ -3,15 +3,14 @@ from pyrogram import filters
 
 from decouple import config
 
-import session.session_gen
-import handlers.cyberdrop
-import handlers.bunkr
-import handlers.start
-import handlers.help
-import handlers.streamdl
-import handlers.streamul
-import handlers.ping
+from pyrogram import Client
+from pyrogram import filters
 
+from decouple import config
+
+import sys
+sys.path.append('../')
+import session.session_gen
 log_chat_id = config("LOG_CHAT_ID")
 
 app = session.session_gen.gen_session()
