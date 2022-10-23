@@ -1,3 +1,8 @@
+from pyrogram import Client
+from pyrogram import filters
+
+from decouple import config
+
 import session.session_gen
 import handlers.cyberdrop
 import handlers.bunkr
