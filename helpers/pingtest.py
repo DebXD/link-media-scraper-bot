@@ -5,6 +5,4 @@ def test_ping():
     print("Testing speed")
     ping = s.get_best_server().get('latency')
     print(f"ping is : {ping}ms")
-    ping = str(ping) + "ms"
     return ping
-

@@ -3,14 +3,8 @@ from pyrogram import filters
 
 from decouple import config
 
-from pyrogram import Client
-from pyrogram import filters
-
-from decouple import config
-
-import sys
-sys.path.append('../')
 import session.session_gen
+
 log_chat_id = config("LOG_CHAT_ID")
 
 app = session.session_gen.gen_session()
