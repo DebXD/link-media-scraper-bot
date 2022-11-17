@@ -9,7 +9,7 @@ linkGrabber==0.3.1
 lxml==4.9.1
 moviepy==1.0.3
 numpy==1.23.2
-Pillow==9.2.0
+Pillow==9.3.0
 proglog==0.1.10
 pyaes==1.6.1
 Pyrogram==2.0.41
