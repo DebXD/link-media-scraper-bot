@@ -1,5 +1,6 @@
 # link-media-scraper-bot
-A Telegram bot that used to download or upload the media contents from cyberdrop, bunkr and streamtape links.
+A Telegram bot that used to download or upload the media contents from cyberdrop, bunkr and streamtape links.<br>
+*Note - Bunkr scraper is kind of dead.
 
 ## Simply Deploy on Heroku (Easier Way):
 
