@@ -1,13 +1,20 @@
+aiohttp==3.8.3
+aiosignal==1.3.1
+async-timeout==4.0.2
+attrs==22.2.0
 beautifulsoup4==4.11.1
 certifi==2022.12.7
 charset-normalizer==2.1.1
+colorama==0.4.6
 decorator==4.4.2
+frozenlist==1.3.3
 idna==3.3
 imageio==2.21.1
 imageio-ffmpeg==0.4.7
 linkGrabber==0.3.1
 lxml==4.9.1
 moviepy==1.0.3
+multidict==6.0.4
 numpy==1.23.2
 Pillow==9.3.0
 proglog==0.1.10
@@ -22,3 +29,5 @@ speedtest==0.0.1
 TgCrypto==1.2.3
 tqdm==4.64.0
 urllib3==1.26.12
+yarl==1.8.2
+
