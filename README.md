@@ -6,8 +6,8 @@ A Telegram bot that used to download or upload the media contents from cyberdrop
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DebXD/link-media-scraper-bot)
 ## Supported Handlers and Features :
- * `/cyberdrop [link]` For cyberdrop links 
- * `/bunkr [link]` For bunkr links 
+ * `/cyberdrop [link]` For cyberdrop folder/album links 
+ * `/bunkr [link]` For bunkr folder/album links 
  * `/streamdl [link]` For streamtape leeching. see environment variable section before using this command
  *  Send any video to upload it to streamtape. see environment variable section...
  * `/ping` Check latency
