@@ -29,67 +29,66 @@ def exec_bunkr(client,message):
         for url in url_list:
             extension = utils.get_extension.get_url_extension(url)
             #print(extension)
-
-            if extension == ".jpg":
-                try:
-                    response = session.get(url, allow_redirects= True)
-                    open("image.jpg","wb").write(response.content)
-                    print(f"Uploading {extension}...")
-                    
-
+            print(f"Downloading...{extension}")
+            response = session.get(url, allow_redirects= True, verify=False)
+            if response.status_code == 200:
+                if extension == ".jpg":
                     try:
-                        client.send_photo(chat_id = chat_id, photo = open("image.jpg","rb"))
-                        print("Sent")
-
-                        time.sleep(0.1)
-                    except Exception as e:
-                        print(e)
-                except Exception as e:
-                    print(e)
-                                          
-            elif extension == ".png":
-                try:
-                    response = session.get(url, allow_redirects= True)
-                    open("image.png","wb").write(response.content)
-                    directory = os.getcwd()
-                    print(f"Uploading {extension}...")
-
-                    try:
-                        client.send_photo(chat_id = chat_id, photo = open("image.png","rb"))
-                        print("Sent")
-
-                        time.sleep(0.1)
-                    except Exception as e:
-                        print(e)
-                except Exception as e:
-                    print(e)
-
-
-            else:
-                try:
-                    print(f"Downloading...{extension}")
-                    response = session.get(url, allow_redirects= True)
-                    open("video.mp4","wb").write(response.content)
-                    directory = os.getcwd()
-                    
-                    try:
-                        import thumbnail.thumb
-                    
-                        thumbnail_path = thumbnail.thumb.make_thumbnail()
-
-
-                        client.send_video(chat_id = chat_id, video = open("video.mp4","rb"), thumb=open(thumbnail_path,"rb"))
-
-                        os.remove(directory+"/"+ thumbnail_path)
+                        open("image.jpg","wb").write(response.content)
+                        print(f"Uploading {extension}...")
                         
-                        print("Sent")
-                        os.remove(directory+"/video.mp4")
-                        print(f'{extension} removed.')
-                        time.sleep(0.1)
+
+                        try:
+                            client.send_photo(chat_id = chat_id, photo = open("image.jpg","rb"))
+                            print("Sent")
+
+                            time.sleep(0.1)
+                        except Exception as e:
+                            print(e)
                     except Exception as e:
                         print(e)
-                except Exception as e:
-                    print(e)
+                                            
+                elif extension == ".png":
+                    try:
+                        open("image.png","wb").write(response.content)
+                        directory = os.getcwd()
+                        print(f"Uploading {extension}...")
+
+                        try:
+                            client.send_photo(chat_id = chat_id, photo = open("image.png","rb"))
+                            print("Sent")
+
+                            time.sleep(0.1)
+                        except Exception as e:
+                            print(e)
+                    except Exception as e:
+                        print(e)
+
+
+                else:
+                    try:  
+                        print(response.content)
+                        open("video.mp4","wb").write(response.content)
+                        directory = os.getcwd()
+                        
+                        try:
+                            import thumbnail.thumb
+                        
+                            thumbnail_path = thumbnail.thumb.make_thumbnail()
+
+
+                            client.send_video(chat_id = chat_id, video = open("video.mp4","rb"), thumb=open(thumbnail_path,"rb"))
+
+                            os.remove(directory+"/"+ thumbnail_path)
+                            
+                            print("Sent")
+                            os.remove(directory+"/video.mp4")
+                            print(f'{extension} removed.')
+                            time.sleep(0.1)
+                        except Exception as e:
+                            print(e)
+                    except Exception as e:
+                        print(e)
 
         print("Task is Completed")
         client.send_message(chat_id = chat_id, text="Task Completed", reply_to_message_id = msg_id)

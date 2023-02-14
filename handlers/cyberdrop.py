@@ -26,7 +26,7 @@ def exec_cyberdrop(client,message):
 
             if extension == ".jpg":
                 try:
-                    response = session.get(link, allow_redirects= True, timeout=20)
+                    response = session.get(link, allow_redirects= True, verify=False, timeout=20)
                     open("image.jpg","wb").write(response.content)
                     print("Sending image...")
 
@@ -46,7 +46,7 @@ def exec_cyberdrop(client,message):
 
             elif extension == ".png":
                 try:
-                    response = session.get(link, allow_redirects= True, timeout=20)
+                    response = session.get(link, allow_redirects= True, verify=False, timeout=20)
                     open("image.png","wb").write(response.content)
                     directory = os.getcwd()
                     print("Sending image...")
@@ -69,7 +69,7 @@ def exec_cyberdrop(client,message):
 
                 try:
                     print("Downloading...mp4")
-                    response = session.get(link, allow_redirects= True)
+                    response = session.get(link, allow_redirects= True, verify=False)
                     open("video.mp4","wb").write(response.content)
                     
                     

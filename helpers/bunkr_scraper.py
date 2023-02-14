@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import asyncio
 import aiohttp
+from utils import get_extension
 
 
 def bunkr_scraper(url):
@@ -22,10 +23,25 @@ def bunkr_scraper(url):
                 if "/v/" in href:
                     modified_href = "https://bunkr.su" + href
                     print(modified_href)
-                    url_list.append(modified_href)
+                    html_text = await get_text(modified_href)
+                    sp = BeautifulSoup(html_text, "html.parser")
+                    for source in sp.find_all('source'):
+                        link = source.get("src")
+                        print(link)
+                        url_list.append(link)
                 else:
                     print(href)
-                    url_list.append(href)
+                    extension = get_extension.get_url_extension(href)
+                    image_extension_list = ['.jpg', '.png',".jpeg",".webp",".gif",".svg",".ico",".raw" ]
+                    if  extension in image_extension_list:
+                        url_list.append(href)
+                    else:
+                        html_text = await get_text(href)
+                        sp = BeautifulSoup(html_text, "html.parser")
+                        for source in sp.find_all('source'):
+                            link = source.get("src")
+                            print(link)
+                            url_list.append(link)
         return url_list
     url_list = asyncio.run(res(url))
     return url_list
