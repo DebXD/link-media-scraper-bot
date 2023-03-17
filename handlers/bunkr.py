@@ -3,6 +3,7 @@ import json
 
 import helpers.bunkr_scraper
 import utils.get_extension
+import urllib3
 
 session = requests.Session()
 
@@ -30,7 +31,8 @@ def exec_bunkr(client,message):
             extension = utils.get_extension.get_url_extension(url)
             #print(extension)
             print(f"Downloading...{extension}")
-            response = session.get(url, allow_redirects= True, verify=False)
+            response = session.get(url, allow_redirects= True, verify=False,)
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             if response.status_code == 200:
                 if extension == ".jpg":
                     try:
@@ -67,7 +69,6 @@ def exec_bunkr(client,message):
 
                 else:
                     try:  
-                        print(response.content)
                         open("video.mp4","wb").write(response.content)
                         directory = os.getcwd()
                         

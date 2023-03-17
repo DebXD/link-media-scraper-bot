@@ -17,16 +17,15 @@ def exec_cyberdrop(client,message):
         client.send_message(chat_id=chat_id, text="Enter a Cyberdrop Link")
     else:
         url_list = helpers.grabber.get_urls(text)
-        #print(url_list)
+        print(url_list)
         client.send_message(chat_id=chat_id, text="Please Wait...")
 
         for link in url_list:
             extension = utils.get_extension.get_url_extension(link)
             #print(extension)
-
             if extension == ".jpg":
                 try:
-                    response = session.get(link, allow_redirects= True, verify=False, timeout=20)
+                    response = response = session.get(link, allow_redirects= True, verify=False,)
                     open("image.jpg","wb").write(response.content)
                     print("Sending image...")
 
@@ -46,7 +45,7 @@ def exec_cyberdrop(client,message):
 
             elif extension == ".png":
                 try:
-                    response = session.get(link, allow_redirects= True, verify=False, timeout=20)
+                    response = response = session.get(link, allow_redirects= True, verify=False,)
                     open("image.png","wb").write(response.content)
                     directory = os.getcwd()
                     print("Sending image...")
@@ -69,7 +68,7 @@ def exec_cyberdrop(client,message):
 
                 try:
                     print("Downloading...mp4")
-                    response = session.get(link, allow_redirects= True, verify=False)
+                    response = response = session.get(link, allow_redirects= True, verify=False,)
                     open("video.mp4","wb").write(response.content)
                     
                     
